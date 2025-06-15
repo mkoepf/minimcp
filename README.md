@@ -3,6 +3,8 @@
 Minimal FastMCP server and client setup for sharing 
 a resource using the Model Context Protocol (MCP).
 
+Used in workshops to teach essential MCP concepts.
+
 ## Features
 - **Server**: Serves a resource at `file://resource.txt` via FastMCP.
 - **Client**: Connects to the server and retrieves the resource content.
