@@ -1,16 +1,19 @@
 from fastmcp import Client
 import asyncio
 import argparse
+from typing import Any
 
 
-async def test_server_locall(mode: str):
+def init_client(mode: str) -> Client[Any]:
     if mode == "stdio":
-        client = Client("minimcp-server.py")
+        return Client("minimcp_server.py")
     else:
-        client = Client("http://localhost:8000/sse")
+        return Client("http://localhost:8000/sse")
+
+
+async def get_resource(client: Client[Any]) -> str:
     async with client:
-        result = await client.read_resource("file://resource.txt")
-        print(f"Resource content: {result}")
+        return await client.read_resource("file://resource.txt")
 
 
 if __name__ == "__main__":
@@ -27,5 +30,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print("Testing the FastMCP server...")
-    asyncio.run(test_server_locall(args.mode))
+    client: Client[Any] = init_client(args.mode)
+    result = asyncio.run(get_resource(client))
+    print(f"Resource content: {result}")
     print("Test completed.")
