@@ -2,6 +2,7 @@ from fastmcp import Client
 import asyncio
 import argparse
 from typing import Any
+from mcp.types import TextResourceContents, BlobResourceContents
 
 
 def init_client(mode: str) -> Client[Any]:
@@ -11,7 +12,9 @@ def init_client(mode: str) -> Client[Any]:
         return Client("http://localhost:8000/sse")
 
 
-async def get_resource(client: Client[Any]) -> str:
+async def get_resource(
+    client: Client[Any],
+) -> list[TextResourceContents | BlobResourceContents]:
     async with client:
         return await client.read_resource("file://resource.txt")
 
