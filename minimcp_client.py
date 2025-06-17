@@ -5,14 +5,7 @@ from typing import Any
 from mcp.types import TextResourceContents, BlobResourceContents
 
 
-def init_client(mode: str) -> Client[Any]:
-    if mode == "stdio":
-        return Client("minimcp_server.py")
-    else:
-        return Client("http://localhost:8000/sse")
-
-
-async def get_resource(
+async def get_resources(
     client: Client[Any],
 ) -> list[TextResourceContents | BlobResourceContents]:
     async with client:
@@ -24,16 +17,18 @@ if __name__ == "__main__":
         description="Test the FastMCP server via stdio or sse."
     )
     parser.add_argument(
-        "--mode",
-        choices=["stdio", "sse"],
-        default="stdio",
-        help="Connection mode: stdio (local, runs its own server) or sse "
-        "(http) . Default is 'stdio'.",
+        "--serverpath",
+        default="minimcp_server.py",
+        type=str,
+        help="Path to the MCP server (default: minimcp_server.py, i.e. "
+        "stdio).",
     )
     args = parser.parse_args()
 
     print("Testing the FastMCP server...")
-    client: Client[Any] = init_client(args.mode)
-    result = asyncio.run(get_resource(client))
-    print(f"Resource content: {result}")
+    client: Client[Any] = Client(args.serverpath)
+
+    resource_contents = asyncio.run(get_resources(client))
+
+    print(f"Resource contents: {resource_contents}")
     print("Test completed.")

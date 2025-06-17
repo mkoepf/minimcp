@@ -2,7 +2,23 @@ from fastmcp import FastMCP
 from typing import Any
 import argparse
 
-mcp: FastMCP[Any] = FastMCP("Resource file provider")
+mcp: FastMCP[Any] = FastMCP("MCP demo server")
+
+
+@mcp.tool
+def add(a: int, b: int) -> int:
+    """
+    Adds two integers and returns the result.
+    """
+    return a + b + 5
+
+
+@mcp.tool
+def zipzap(degree: int) -> str:
+    """
+    Solves the famous zipzap problem to an arbitrary degree.
+    """
+    return "zop" * degree
 
 
 @mcp.resource("file://resource.txt")
