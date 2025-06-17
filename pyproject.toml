@@ -1,7 +1,7 @@
 [project]
-name = "usaible"
+name = "minimcp"
 version = "0.1.0"
-description = "Minimcal FastMCP server and client"
+description = "Example code for MCP-enabled LLM agents"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
