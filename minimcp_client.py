@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "fastmcp",
+# ]
+# ///
+
 from fastmcp import Client
 import asyncio
 import argparse
@@ -32,3 +39,4 @@ if __name__ == "__main__":
 
     print(f"Resource contents: {resource_contents}")
     print("Test completed.")
+

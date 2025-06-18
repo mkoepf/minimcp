@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "fastmcp",
+# ]
+# ///
+
 from fastmcp import FastMCP
 from typing import Any
 import argparse
@@ -45,3 +52,4 @@ if __name__ == "__main__":
         mcp.run("sse")
     else:
         mcp.run("stdio")
+

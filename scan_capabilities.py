@@ -1,3 +1,11 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "fastmcp",
+#     "langchain-mcp-adapters",
+# ]
+# ///
+
 import argparse
 import asyncio
 from fastmcp import Client
@@ -47,3 +55,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     asyncio.run(main(args.serverpath))
+

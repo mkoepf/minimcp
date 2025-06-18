@@ -1,3 +1,14 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "fastmcp",
+#     "langchain-core",
+#     "langchain-mcp-adapters",
+#     "langchain-ollama",
+#     "langgraph",
+# ]
+# ///
+
 import argparse
 import asyncio
 
@@ -87,3 +98,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     asyncio.run(main(args.serverpath))
+
