@@ -9,6 +9,13 @@ Throughout the examples, we'll be using:
 - [LangChain](https://www.langchain.com/) to connect the MCP server's capabilities (tools, resources, ...) to LLMs
 - [LangGraph](https://www.langchain.com/langgraph) to build agents that use the MCP server's capabilities to fulfill tasks
 
+The dependencies for each script are documented in the script using [inline
+script
+metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#inline-script-metadata).
+
+I recommend using [uv](https://github.com/astral-sh/uv) to handle dependencies
+automatically.
+
 # Example 1: Mini MCP client & server
 
 ## Files
@@ -23,13 +30,10 @@ Throughout the examples, we'll be using:
 - How to access the server's capabilities
 - Understand modes: Client and server can be used in stdio (local) and sse mode (http)
 
-## Setup
+## Dependencies
 
-### 1. Install Dependencies
 
-```sh
-uv add fastmcp
-```
+- fastmcp
 
 ## Usage
 
@@ -76,13 +80,6 @@ python minimcp-client.py --serverpath http://127.0.0.1:8000/sse
 
 ## Setup
 
-### Install Dependencies
-
-```sh
-uv add fastmcp
-uv add langgraph
-```
-
 ## Usage
 
 List the capabilities of any MCP server (if it does not require authentication).
@@ -124,14 +121,6 @@ Then either reuse the server in the next examples or kill it.
 - How to make an agent fulfill tasks using the tools
 
 ## Setup
-
-### Install Dependencies
-
-```sh
-uv add fastmcp
-uv add langgraph
-uv add langchain-ollama
-```
 
 ### Have Ollama available
 
